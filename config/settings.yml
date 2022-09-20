@@ -1,0 +1,6 @@
+db:
+  adapter: postgresql
+  host: localhost
+  user: postgres
+  port: 9490
+  password: 123
