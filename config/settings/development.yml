@@ -1,2 +1,5 @@
 db:
   database: auth
+  port: 5450
+  password: 123
+  user: postgres_dev
