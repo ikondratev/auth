@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
-
+gem 'rack-contrib', '~> 2.3'
 gem 'rake', '~> 13.0.1'
 gem 'puma', '~> 4.3.12'
 
@@ -27,6 +27,8 @@ gem 'rubocop', require: false
 gem 'rubocop-rake', require: false
 
 group :test do
+  gem 'ruby-debug-ide'
+  gem 'debase'
   gem 'rspec', '~> 3.9.0'
   gem 'factory_bot', '~> 5.2.0'
   gem 'rack-test', '~> 1.1.0'

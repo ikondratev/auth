@@ -1,5 +1,5 @@
 db:
   database: auth_test
-  port: 5450
+  port: 5451
   password: 123
-  user: postgres_test
+  user: user_test

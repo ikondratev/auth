@@ -1,0 +1,4 @@
+en:
+  api:
+    errors:
+      validation_error: 'Request params error'
