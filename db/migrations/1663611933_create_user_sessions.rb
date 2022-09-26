@@ -1,13 +1,13 @@
 Sequel.migration do
   change do
     create_table(:user_sessions) do
-      primary_key :id, type: :Bignum
+      primary_key :id
 
-      column :uuid, :uuid, null: false
-      column :created_at, "timestamp(6) without time zone", null: false
-      column :updated_at, "timestamp(6) without time zone", null: false
+      String :uuid, null: false
+      DateTime :created_at, null: false
+      DateTime :updated_at, null: false
 
-      alter_table(:albums){add_foreign_key :user_id, :users}
+      foreign_key :user_id, :users
 
       index [:uuid], name: :index_user_sessions_on_uuid
     end

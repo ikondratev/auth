@@ -11,8 +11,8 @@ module Users
     def call
       @user = ::User.new(
         name: @name,
-        email: @mail,
-        password: password
+        email: @email,
+        password_digest: ::User.secure_password(@password, @email)
       )
 
       if @user.valid?

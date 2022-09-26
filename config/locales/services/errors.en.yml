@@ -1,0 +1,5 @@
+en:
+  services:
+    user_sessions:
+      create_service:
+        unauthorized: 'User was not authenticated'
