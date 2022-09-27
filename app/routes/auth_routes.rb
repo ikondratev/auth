@@ -1,4 +1,4 @@
-class UserRoutes < Application
+class AuthRoutes < Application
   namespace "/signup" do
     post do
       valid_params = validate_with!(UserParamsValidation)
