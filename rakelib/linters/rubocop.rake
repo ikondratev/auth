@@ -1,5 +1,5 @@
 namespace :linters do
-  desc "Run database migrations"
+  desc "Run linters"
   require "rubocop/rake_task"
 
   RuboCop::RakeTask.new(:rubocop) do |task|

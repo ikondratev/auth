@@ -29,7 +29,7 @@ class AuthRoutes < Application
 
       if result.success?
         status 201
-        json token: result.session.uuid
+        json meta: { token: result.session.uuid }
       else
         status 422
         error_response result.errors
