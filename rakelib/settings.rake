@@ -1,5 +1,3 @@
-require_relative "../config/environment"
-
 task :settings do
   require "config"
   require_relative "../config/initializers/config"

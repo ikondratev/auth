@@ -1,6 +1,7 @@
 namespace :db do
   desc "Run init seeds"
   task :seeds, %i[version] => :settings do
+    require_relative "../../config/environment"
     require "sequel/core"
     require "sequel/extensions/seed"
     Sequel.extension :seed
