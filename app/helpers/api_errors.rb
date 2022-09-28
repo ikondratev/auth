@@ -30,4 +30,9 @@ module ApiErrors
     status 422
     error_response I18n.t(:validation_error, scope: 'api.errors')
   end
+
+  error StandardError do
+    status 500
+    error_response I18n.t(:unexpected_error, scope: 'backend.errors')
+  end
 end
