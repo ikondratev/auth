@@ -1,12 +1,10 @@
 class AuthRoutes < Application
-  namespace "/ping" do
-    get do
-      "PONG"
-    end
+  get "/ping" do
+    "PONG"
   end
 
-  namespace "/signup" do
-    post do
+  namespace "/v1" do
+    post "/signup" do
       valid_params = validate_with!(Api::UserParamsValidation)
 
       result = Users::CreateService.call(
@@ -22,10 +20,8 @@ class AuthRoutes < Application
         error_response result.user
       end
     end
-  end
 
-  namespace "/login" do
-    post do
+    post "/login" do
       valid_params = validate_with!(Api::SessionParamsValidation)
 
       result = UserSessions::CreateService.call(

@@ -1,12 +1,21 @@
 require "application_helper"
 
 RSpec.describe AuthRoutes, type: :routes do
-  describe "POST /login" do
+  describe "GET /ping" do
+    it "should return PONG" do
+      get "/ping"
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to eq("PONG")
+    end
+  end
+
+  describe "POST /v1/login" do
     let(:user_id) { 1 }
 
     context "missing parameters" do
       it "should return error" do
-        post "/login"
+        post "/v1/login"
 
         expect(last_response.status).to eq(422)
       end
@@ -25,7 +34,7 @@ RSpec.describe AuthRoutes, type: :routes do
       end
 
       it "should return error" do
-        post "/login", user_params
+        post "/v1/login", user_params
 
         expect(last_response.status).to eq(422)
         expect(response_body["errors"]).to eq(expected_error)
@@ -45,7 +54,7 @@ RSpec.describe AuthRoutes, type: :routes do
       end
 
       it "should return error" do
-        post "/login", user_params
+        post "/v1/login", user_params
 
         expect(response_body["errors"]).to eq(expected_error)
       end
@@ -75,17 +84,17 @@ RSpec.describe AuthRoutes, type: :routes do
       end
 
       it "should return valid result" do
-        post "/login", user_params
+        post "/v1/login", user_params
 
         expect(response_body).to a_hash_including(expected_result)
       end
     end
   end
 
-  describe "POST /signup" do
+  describe "POST /v1/signup" do
     context "missing parameters" do
       it "should return error" do
-        post "/signup"
+        post "/v1/signup"
 
         expect(last_response.status).to eq(422)
       end
@@ -104,7 +113,7 @@ RSpec.describe AuthRoutes, type: :routes do
       end
 
       it "should return error" do
-        post "/signup", user_params
+        post "/v1/signup", user_params
 
         expect(last_response.status).to eq(422)
         expect(response_body["errors"]).to eq(expected_error)
@@ -121,7 +130,7 @@ RSpec.describe AuthRoutes, type: :routes do
       end
 
       it "should return valid result" do
-        post "/signup", user_params
+        post "/v1/signup", user_params
 
         expect(last_response.status).to eq(201)
       end
