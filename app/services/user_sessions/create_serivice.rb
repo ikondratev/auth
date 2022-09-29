@@ -23,9 +23,12 @@ module UserSessions
 
     def create_session
       @session = ::UserSession.new
-      @session.user_id = @user.id
 
-      fail!(@session.errors) unless @session.save
+      if @session.valid?
+        @user.add_session(@session)
+      else
+        fail!(@session.errors)
+      end
     end
 
     def fail_t!(key)

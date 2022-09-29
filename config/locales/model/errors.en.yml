@@ -16,4 +16,4 @@ ru:
           type: 'Wrong password type'
       user_session:
         uuid:
-          blank: 'No empty name required'
+          blank: 'No empty uuid required'
