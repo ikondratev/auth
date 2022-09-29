@@ -77,16 +77,11 @@ RSpec.describe AuthRoutes, type: :routes do
         UserSession.last
       end
 
-      let(:expected_result) do
-        {
-          "meta" => { "token" => user_session.uuid.to_s }
-        }
-      end
-
       it "should return valid result" do
         post "/v1/login", user_params
 
-        expect(response_body).to a_hash_including(expected_result)
+        expect(last_response.status).to eq(200)
+        expect(response_body["meta"]["token"]).not_to be_nil
       end
     end
   end

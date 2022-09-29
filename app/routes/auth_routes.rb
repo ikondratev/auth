@@ -30,8 +30,10 @@ class AuthRoutes < Application
       )
 
       if result.success?
-        status 201
-        json meta: { token: result.session.uuid }
+        token = JwtEncoder.encode(result.session.uuid)
+
+        status 200
+        json meta: { token: token }
       else
         status 422
         error_response result.errors

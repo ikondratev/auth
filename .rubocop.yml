@@ -87,3 +87,6 @@ Style/IfUnlessModifier:
 
 Naming/MethodParameterName:
   Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
