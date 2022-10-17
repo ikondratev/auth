@@ -1,6 +1,4 @@
 module Auth
-  AUTH_TOKEN = %r{\ABearer}
-
   def extracted_token
     JwtEncoder.decode(matched_token)
   rescue JWT::DecodeError
@@ -10,7 +8,7 @@ module Auth
   private
 
   def matched_token
-    result = auth_header&.match(AUTH_TOKEN)
+    result = auth_header&.match(Constants::AUTH_TOKEN_REGEXP)
 
     return if result.blank?
 

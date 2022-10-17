@@ -1,5 +1,3 @@
-require "securerandom"
-
 module UserSessions
   class CreateService
     prepend BaseService
@@ -18,7 +16,7 @@ module UserSessions
 
     def validate
       @user = ::User.find(email: @email)
-      return fail_t!(:unauthorized) unless @user&.authenticate(@password, @email)
+      return fail_t!(:unauthorized) unless @user&.authenticate(@password)
     end
 
     def create_session

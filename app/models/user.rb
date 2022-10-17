@@ -9,9 +9,9 @@ class User < Sequel::Model
   def validate
     super
 
-    validation_format(Constants::NAME_FORMAT, :name, message: I18n.t(:format, scope: 'model.errors.user.name'))
-    validates_presence :name, message: I18n.t(:blank, scope: 'model.errors.user.name')
-    validates_presence :email, message: I18n.t(:blank, scope: 'model.errors.user.email')
-    validates_presence :password, message: I18n.t(:blank, scope: 'model.errors.user.password_digest') if new?
+    validates_format(Constants::NAME_FORMAT, :name, message: I18n.t(:format, scope: "model.errors.user.name"))
+    validates_presence :name, message: I18n.t(:blank, scope: "model.errors.user.name")
+    validates_presence :email, message: I18n.t(:blank, scope: "model.errors.user.email")
+    validates_presence :password, message: I18n.t(:blank, scope: "model.errors.user.password") if new?
   end
 end

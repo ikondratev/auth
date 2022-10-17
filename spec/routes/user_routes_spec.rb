@@ -63,13 +63,15 @@ RSpec.describe UserRoutes, type: :routes do
     context "without any errors" do
       before do
         FactoryBot.create(:user)
-        FactoryBot.create(:user_session)
       end
+
+      let(:email) { User.last.email }
+      let(:password) { "test_password" }
 
       let(:user_params) do
         {
-          email: "test@email.com",
-          password: "123"
+          email: email,
+          password: password
         }
       end
 
