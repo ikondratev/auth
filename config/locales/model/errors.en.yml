@@ -1,0 +1,19 @@
+ru:
+  model:
+    errors:
+      user:
+        name:
+          blank: 'No empty name required'
+          invalid: 'Wrong name param'
+          type: 'Wrong name type'
+        email:
+          blank: 'No empty email param required'
+          invalid: 'Wrong email param'
+          type: 'Wrong email type'
+        password:
+          blank: 'No empty password param required'
+          invalid: 'Wrong password param'
+          type: 'Wrong password type'
+      user_session:
+        uuid:
+          blank: 'No empty uuid required'

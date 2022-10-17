@@ -1,0 +1,6 @@
+en:
+  api:
+    errors:
+      validation_error: 'Request params error'
+      not_unique: 'This entity already exist'
+      unauthorized:

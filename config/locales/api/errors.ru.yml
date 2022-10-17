@@ -1,0 +1,5 @@
+ru:
+  api:
+    errors:
+      validation_error: 'Ошибка в параметре запроса'
+      not_unique: 'Данный ресурс уже существует'

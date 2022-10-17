@@ -1,0 +1,17 @@
+ru:
+  model:
+    errors:
+      user:
+        name:
+          blank: 'Имя не может быть пустым'
+          invalid: 'Неверный формат имени'
+          type: 'Неверный тип имени'
+        email:
+          blank: 'Email не может быть пустым'
+          type: 'Неверный тип почты'
+        password:
+          blank: 'Пароль не может быть пустым'
+          type: 'Неверный тип пароля'
+      user_session:
+        uuid:
+          blank: 'UUID не может быть пустым'
