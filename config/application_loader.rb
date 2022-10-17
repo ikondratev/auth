@@ -2,6 +2,7 @@ module ApplicationLoader
   extend self
 
   def load_app!
+    init_constants
     init_config
     init_db
     require_app
@@ -9,6 +10,10 @@ module ApplicationLoader
   end
 
   private
+
+  def init_constants
+    require_file "app/lib/constants"
+  end
 
   def init_config
     require_file "config/initializers/config"

@@ -6,7 +6,7 @@ module Api
     end
 
     rule(:email) do
-      unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
+      unless Constants::REGEXP_VALID_EMAIL.match?(value)
         key.failure("has invalid format")
       end
     end

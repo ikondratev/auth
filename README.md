@@ -6,10 +6,6 @@ Authentication service
 ```sh
 ruby '2.7.2'
 ```
-## Dependencies:
-```sh
-ruby '2.7.2'
-```
 ## Requests:
 ```sh
 #ping request:
