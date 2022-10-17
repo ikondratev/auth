@@ -8,7 +8,7 @@ module Auth
   private
 
   def matched_token
-    result = auth_header&.match(Constants::AUTH_TOKEN_REGEXP)
+    result = auth_header&.match(Constants::REGEXP_VALID_AUTH)
 
     return if result.blank?
 
@@ -16,6 +16,6 @@ module Auth
   end
 
   def auth_header
-    request.env("HTTP_AUTHORIZATION")
+    request.env[Constants::HTTP_AUTHORIZATION_HEADER]
   end
 end

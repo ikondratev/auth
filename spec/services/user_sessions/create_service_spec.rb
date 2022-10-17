@@ -9,10 +9,12 @@ RSpec.describe UserSessions::CreateService do
 
   describe "#call" do
     context "without any errors" do
+      let(:email) { User.last.email }
+
       let(:user_params) do
         {
-          email: "test@email.com",
-          password: "123"
+          email: email,
+          password: "test_password"
         }
       end
 

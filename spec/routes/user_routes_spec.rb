@@ -132,6 +132,5 @@ RSpec.describe UserRoutes, type: :routes do
         expect(last_response.status).to eq(201)
       end
     end
-
   end
 end

@@ -14,7 +14,7 @@ module Auth
       raise "User wasn't found" if session.blank?
 
       @user = session.user
-    rescue StandardError => e
+    rescue StandardError
       fail!(I18n.t(:forbidden, scope: "services.auth.fetch_user_service"))
     end
 
@@ -22,8 +22,8 @@ module Auth
 
     def fetch_session
       UserSession.find(uuid: @uuid)
-    rescue => e
-      raise unless e.cause.kind_of?(PG::InvalidTextRepresentation)
+    rescue StandardError => e
+      raise e unless e.cause.is_a?(PG::InvalidTextRepresentation)
     end
   end
 end
