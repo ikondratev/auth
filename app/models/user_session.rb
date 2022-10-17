@@ -5,6 +5,6 @@ class UserSession < Sequel::Model
 
   def validate
     super
-    validates_presence :uuid, message: I18n.t(:blank, scope: 'model.errors.user_session.uuid')
+    validates_presence :uuid, message: I18n.t(:blank, scope: "model.errors.user_session.uuid")
   end
 end

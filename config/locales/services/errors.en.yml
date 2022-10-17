@@ -2,4 +2,7 @@ en:
   services:
     user_sessions:
       create_service:
-        unauthorized: 'User was not authenticated'
+        unauthorized: "User was not authenticated"
+    auth:
+      fetch_user_service:
+        forbidden: "User wasn't authorized"

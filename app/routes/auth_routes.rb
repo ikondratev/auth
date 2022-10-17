@@ -1,41 +1,15 @@
 class AuthRoutes < Application
-  get "/ping" do
-    "PONG"
-  end
+  helpers Auth
 
   namespace "/v1" do
-    post "/signup" do
-      valid_params = validate_with!(Api::UserParamsValidation)
-
-      result = Users::CreateService.call(
-        name: valid_params[:name],
-        email: valid_params[:email],
-        password: valid_params[:password]
-      )
+    post "/" do
+      result = Auth::FetchUserService.call(uuid: extracted_token)
 
       if result.success?
-        status 201
-      else
-        status 422
-        error_response result.user
-      end
-    end
-
-    post "/login" do
-      valid_params = validate_with!(Api::SessionParamsValidation)
-
-      result = UserSessions::CreateService.call(
-        email: valid_params[:email],
-        password: valid_params[:password]
-      )
-
-      if result.success?
-        token = JwtEncoder.encode(result.session.uuid)
-
         status 200
-        json meta: { token: token }
+        json meta: { user_id: result.user.id }
       else
-        status 422
+        status 403
         error_response result.errors
       end
     end

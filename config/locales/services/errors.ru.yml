@@ -2,4 +2,7 @@ ru:
   services:
     user_sessions:
       create_service:
-        unauthorized: 'Пользователь не прошел аутентификацию'
+        unauthorized: "Пользователь не прошел аутентификацию"
+    auth:
+      fetch_user_service:
+        forbidden: "Пользователь не авторизован"

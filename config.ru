@@ -2,6 +2,7 @@ require_relative "config/environment"
 
 use Rack::PostBodyContentTypeParser
 
-map "/auth" do
-  run AuthRoutes
-end
+run Rack::URLMap.new(
+  "/auth" => AuthRoutes,
+  "/user" => UserRoutes,
+)

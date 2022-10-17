@@ -90,3 +90,5 @@ Naming/MethodParameterName:
 
 Style/ModuleFunction:
   Enabled: false
+Style/RegexpLiteral:
+  Enabled: false

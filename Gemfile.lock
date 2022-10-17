@@ -8,6 +8,7 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
     ast (2.4.2)
+    bcrypt (3.1.18)
     concurrent-ruby (1.1.10)
     config (2.2.3)
       deep_merge (~> 1.2, >= 1.2.1)
@@ -118,6 +119,9 @@ GEM
     sequel (5.32.0)
     sequel-seed (1.1.2)
       sequel (>= 4.49.0)
+    sequel_secure_password (0.2.15)
+      bcrypt (>= 3.1, < 4.0)
+      sequel (>= 4.1.0, < 6.0)
     sinatra (2.2.2)
       mustermann (~> 2.0)
       rack (~> 2.2)
@@ -162,6 +166,7 @@ DEPENDENCIES
   ruby-debug-ide
   sequel (~> 5.32.0)
   sequel-seed (~> 1.1, >= 1.1.2)
+  sequel_secure_password
   sinatra (~> 2.2.0)
   sinatra-contrib (~> 2.2.0)
 
