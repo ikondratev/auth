@@ -1,6 +1,6 @@
 require "application_helper"
 
-RSpec.describe AuthRoutes, type: :routes do
+RSpec.describe UserRoutes, type: :routes do
   describe "GET /ping" do
     it "should return PONG" do
       get "/ping"

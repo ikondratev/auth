@@ -14,6 +14,7 @@ gem 'i18n', '~> 1.8.2'
 gem 'config', '~> 2.2.1'
 
 gem 'pg', '~> 1.2.3'
+gem 'sequel_secure_password'
 gem 'sequel', '~> 5.32.0'
 gem 'sequel-seed', '~> 1.1', '>= 1.1.2'
 gem 'jwt', '~> 1.5', '>= 1.5.4'

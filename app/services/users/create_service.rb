@@ -12,7 +12,7 @@ module Users
       @user = ::User.new(
         name: @name,
         email: @email,
-        password_digest: ::User.secure_password(@password, @email)
+        password: @password
       )
 
       if @user.valid?

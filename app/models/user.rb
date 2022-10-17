@@ -1,7 +1,6 @@
-require "digest"
-
 class User < Sequel::Model
   plugin :association_dependencies
+  plugin :secure_password, include_validations: false
 
   one_to_many :sessions, class: UserSession
 
@@ -10,17 +9,9 @@ class User < Sequel::Model
   def validate
     super
 
+    validation_format(Constants::NAME_FORMAT, :name, message: I18n.t(:format, scope: 'model.errors.user.name'))
     validates_presence :name, message: I18n.t(:blank, scope: 'model.errors.user.name')
     validates_presence :email, message: I18n.t(:blank, scope: 'model.errors.user.email')
-    validates_presence :password_digest, message: I18n.t(:blank, scope: 'model.errors.user.password_digest')
-  end
-
-  def authenticate(*payload)
-    password_digest == self.class.secure_password(payload)
-  end
-
-  def self.secure_password(*payload)
-    salt = payload.join(":")
-    Digest::MD5.hexdigest salt
+    validates_presence :password, message: I18n.t(:blank, scope: 'model.errors.user.password_digest') if new?
   end
 end
