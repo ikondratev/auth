@@ -20,7 +20,7 @@ PONG
 ```sh
 #login request:
 curl --request POST \
-  --url http://localhost:3003/auth/login \
+  --url http://localhost:3003/user/v1/login \
   --header 'Content-Type: application/json' \
   --data '{
 	"email": "new_ivan@gmail.com",
@@ -35,15 +35,27 @@ curl --request POST \
 ```sh
 #signup request:
 curl --request POST \
-  --url http://localhost:3003/auth/signup \
+  --url http://localhost:3003/user/v1/signup \
   --header 'Content-Type: application/json' \
   --data '{
 	"email": "new_ivanov@mail.com",
 	"password": "123342",
-	"name": "name."
+	"name": "name"
 }'
 ```
 ```sh
 #signup response:
-{ "errors": [{ "detail": "Ошибка в параметре запроса" }] }
+201 status
+```
+##
+```sh
+#auth request:
+curl --request POST \
+  --url http://localhost:3003/auth/v1/ \
+  --header 'AUTHORIZATION: Bearer token_from_login_response' \
+  --header 'Content-Type: application/json'
+```
+```sh
+#auth response:
+{ "meta": { "user_id": 3 } }
 ```
