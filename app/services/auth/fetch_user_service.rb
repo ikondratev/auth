@@ -1,6 +1,7 @@
 module Auth
   class FetchUserService
     prepend BaseService
+    include ::TokenEncoder
 
     option :token
 
@@ -9,7 +10,7 @@ module Auth
     def call
       raise "Token is blank" if @token.blank?
 
-      session = fetch_session(extracted_token)
+      session = fetch_session(@token)
 
       raise "User wasn't found" if session.blank?
 
@@ -19,22 +20,6 @@ module Auth
     end
 
     private
-
-    def extracted_token
-      JwtEncoder.decode(matched_token)
-    rescue JWT::DecodeError
-      {}
-    end
-
-    private
-
-    def matched_token
-      result = @token&.match(Constants::REGEXP_VALID_AUTH)
-
-      return if result.blank?
-
-      result[:token]
-    end
 
     def fetch_session(uuid)
       UserSession.find(uuid: uuid)

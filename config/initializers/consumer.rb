@@ -1,10 +1,11 @@
+include ::TokenEncoder
+
 channel = RabbitMq.consumer_channel
 exchange = channel.default_exchange
 queue = channel.queue("auth", durable: true)
 
 queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
-  payload = JSON(payload)
-  result = Auth::FetchUserService.call(token: payload["token"])
+  result = Auth::FetchUserService.call(token: extracted_token(JSON(payload)["token"]))
 
   body = {}
   body.merge!(state: :success, user_id: result.user.id) if result.success?

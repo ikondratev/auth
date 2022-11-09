@@ -3,6 +3,7 @@ module ApplicationLoader
 
   def load_app!
     init_constants
+    init_helpers
     init_config
     init_db
     require_app
@@ -13,6 +14,10 @@ module ApplicationLoader
 
   def init_constants
     require_file "app/lib/constants"
+  end
+
+  def init_helpers
+    require_file "app/lib/token_encoder"
   end
 
   def init_config
