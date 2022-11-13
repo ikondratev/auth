@@ -13,6 +13,9 @@ gem 'sinatra-contrib', '~> 2.2.0'
 gem 'i18n', '~> 1.8.2'
 gem 'config', '~> 2.2.1'
 
+gem 'rack-ougai', '~> 0.3.0'
+gem 'rack-request-id', '~> 0.0.4'
+
 gem 'pg', '~> 1.2.3'
 gem 'sequel_secure_password'
 gem 'sequel', '~> 5.32.0'

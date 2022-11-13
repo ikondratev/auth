@@ -3,3 +3,8 @@ db:
   host: localhost
 rabbit_mq:
   consumer_pool: 10
+app:
+  name: "auth_service"
+log:
+  path: "log/app.log"
+  level: "info"
