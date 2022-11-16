@@ -16,7 +16,7 @@ describe Auth::FetchUserService do
       end
 
       it "should return valid result" do
-        result = subject.call(uuid: uuid)
+        result = subject.call(token: uuid)
         expect(result.success?).to be_truthy
       end
     end
@@ -27,7 +27,7 @@ describe Auth::FetchUserService do
       end
 
       it "should return valid result" do
-        result = subject.call(uuid: uuid)
+        result = subject.call(token: uuid)
         expect(result.success?).not_to be_truthy
       end
     end

@@ -1,19 +1,10 @@
 module Auth
-  def extracted_token
-    JwtEncoder.decode(matched_token)
-  rescue JWT::DecodeError
-    {}
+  include ::TokenEncoder
+  def extract_token
+    extracted_token(auth_header)
   end
 
   private
-
-  def matched_token
-    result = auth_header&.match(Constants::REGEXP_VALID_AUTH)
-
-    return if result.blank?
-
-    result[:token]
-  end
 
   def auth_header
     request.env[Constants::HTTP_AUTHORIZATION_HEADER]

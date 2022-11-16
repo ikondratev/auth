@@ -3,7 +3,7 @@ class AuthRoutes < Application
 
   namespace "/v1" do
     post "/" do
-      result = Auth::FetchUserService.call(uuid: extracted_token)
+      result = Auth::FetchUserService.call(token: extract_token)
 
       if result.success?
         status 200

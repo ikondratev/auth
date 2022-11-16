@@ -1,15 +1,16 @@
 module Auth
   class FetchUserService
     prepend BaseService
+    include ::TokenEncoder
 
-    option :uuid
+    option :token
 
     attr_reader :user
 
     def call
-      raise "Blank uuid" if @uuid.blank?
+      raise "Token is blank" if @token.blank?
 
-      session = fetch_session
+      session = fetch_session(@token)
 
       raise "User wasn't found" if session.blank?
 
@@ -20,8 +21,8 @@ module Auth
 
     private
 
-    def fetch_session
-      UserSession.find(uuid: @uuid)
+    def fetch_session(uuid)
+      UserSession.find(uuid: uuid)
     rescue StandardError => e
       raise e unless e.cause.is_a?(PG::InvalidTextRepresentation)
     end

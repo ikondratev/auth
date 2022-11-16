@@ -1,3 +1,5 @@
 db:
   adapter: postgresql
   host: localhost
+rabbit_mq:
+  consumer_pool: 10
