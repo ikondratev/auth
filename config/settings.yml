@@ -4,7 +4,7 @@ db:
 rabbit_mq:
   consumer_pool: 10
 app:
-  name: "auth_service"
+  name: auth_service
 log:
-  path: "log/app.log"
-  level: "info"
+  path: log/app.log
+  level: info

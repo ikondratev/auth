@@ -5,6 +5,8 @@ exchange = channel.default_exchange
 queue = channel.queue("auth", durable: true)
 
 queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
+  Thread.current[:request_id] = properties.headers["request_id"]
+
   result = Auth::FetchUserService.call(token: extracted_token(JSON(payload)["token"]))
 
   body = {}
