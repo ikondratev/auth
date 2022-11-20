@@ -7,6 +7,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    amazing_print (1.4.0)
     amq-protocol (2.3.2)
     ast (2.4.2)
     bcrypt (3.1.18)
@@ -155,6 +156,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 6.0.0)
+  amazing_print (~> 1.4)
   bunny (~> 2.15.0)
   config (~> 2.2.1)
   database_cleaner-sequel (~> 1.8.0)
