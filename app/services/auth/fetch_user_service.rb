@@ -12,6 +12,8 @@ module Auth
 
       session = fetch_session(@token)
 
+      l "FetchUserService", token: @token
+
       raise "User wasn't found" if session.blank?
 
       @user = session.user

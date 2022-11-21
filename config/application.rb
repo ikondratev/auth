@@ -1,5 +1,7 @@
+require "sinatra/custom_logger"
 class Application < Sinatra::Base
   helpers Validations
+  helpers Sinatra::CustomLogger
 
   configure do
     register Sinatra::Namespace
