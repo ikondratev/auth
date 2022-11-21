@@ -7,7 +7,13 @@ queue = channel.queue("auth", durable: true)
 queue.subscribe(manual_ack: true) do |delivery_info, properties, payload|
   Thread.current[:request_id] = properties.headers["request_id"]
 
-  result = Auth::FetchUserService.call(token: extracted_token(JSON(payload)["token"]))
+  auth_token = extracted_token(JSON(payload)["token"])
+
+  l "AuthService::Consumer", auth_token: auth_token
+
+  result = Auth::FetchUserService.call(
+    token: extracted_token(JSON(payload)["token"])
+  )
 
   body = {}
   body.merge!(state: :success, user_id: result.user.id) if result.success?

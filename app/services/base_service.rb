@@ -33,6 +33,7 @@ module BaseService
   private
 
   def fail!(messages)
+    le self.class, error: messages
     @errors += Array(messages)
     self
   end
